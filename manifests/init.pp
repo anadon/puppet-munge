@@ -14,7 +14,7 @@ class munge (
   $service_hasstatus    = $munge::params::service_hasstatus,
   $service_hasrestart   = $munge::params::service_hasrestart,
   $munge_key_path       = $munge::params::munge_key_path,
-  $munge_key_source     = undef,
+  $munge_key_content     = undef,
 ) inherits munge::params {
 
   validate_bool($package_manage_repo)

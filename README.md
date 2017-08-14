@@ -23,7 +23,7 @@ This module manages MUNGE.
 Manage munge and define a site specific munge.key
 
     class { 'munge':
-      munge_key_source  => 'puppet:///modules/site_munge/munge.key',
+      munge_key_content  => $your_munge_key,
     }
 
 ## Reference
@@ -55,7 +55,7 @@ Munge package name.
 
 #####`package_manage_repo`
 
-Boolean.  Sets if the repository class should be included ('::epel') and if the package should require the corresponding Yumrepo class (defaults to true). 
+Boolean.  Sets if the repository class should be included ('::epel') and if the package should require the corresponding Yumrepo class (defaults to true).
 
 #####`install_dev`
 
@@ -89,9 +89,9 @@ Munge service hasrestart value.
 
 Path to the munge.key file.  Default is OS dependent.
 
-#####`munge_key_source`
+#####`munge_key_content`
 
-The source for the munge.key file (defaults to undef).
+The content for the munge.key file (defaults to undef).
 
 ## Limitations
 
