@@ -5,6 +5,7 @@
 class munge (
   $package_ensure       = 'present',
   $package_name         = $munge::params::package_name,
+  $package_manage_repo  = true,
   $install_dev          = false,
   $dev_package_name     = $munge::params::dev_package_name,
   $service_name         = $munge::params::service_name,
@@ -16,7 +17,9 @@ class munge (
   $munge_key_file_content = undef,
 ) inherits munge::params {
 
+  validate_bool($package_manage_repo)
   validate_bool($install_dev)
+  validate_bool($service_enable)
 
   anchor { 'munge::start': }
   -> class { '::munge::install': }
