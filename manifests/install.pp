@@ -9,7 +9,6 @@ class munge::install {
   if $::munge::package_manage_repo {
     case $::osfamily {
       'RedHat': {
-        include '::epel'
         $package_require_eff = $::munge::package_require
       }
       default: {
