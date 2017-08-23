@@ -13,15 +13,15 @@ class munge (
   $service_hasstatus    = $munge::params::service_hasstatus,
   $service_hasrestart   = $munge::params::service_hasrestart,
   $munge_key_path       = $munge::params::munge_key_path,
-  $munge_key_source     = undef,
+  $munge_key_file_content = undef,
 ) inherits munge::params {
 
   validate_bool($install_dev)
 
-  anchor { 'munge::start': }->
-  class { '::munge::install': }->
-  class { '::munge::config': }~>
-  class { '::munge::service': }->
-  anchor { 'munge::end': }
+  anchor { 'munge::start': }
+  -> class { '::munge::install': }
+  -> class { '::munge::config': }
+  -> class { '::munge::service': }
+  -> anchor { 'munge::end': }
 
 }

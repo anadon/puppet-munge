@@ -12,7 +12,7 @@ class munge::config {
     owner   => 'munge',
     group   => 'munge',
     mode    => '0400',
-    source  => $::munge::munge_key_source,
+    content => $::munge::munge_key_file_content,
   }
 
 }
